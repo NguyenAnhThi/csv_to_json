@@ -91,6 +91,7 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    pg (0.20.0)
     popper_js (1.9.9)
     puma (3.9.1)
     rack (2.0.3)
@@ -172,6 +173,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  pg
   puma (~> 3.0)
   rails (~> 5.0.2)
   sass-rails (~> 5.0)
