@@ -1,0 +1,23 @@
+<%= form_tag '/home', multipart: true do%>
+  <div class="row">
+      <div class="col-sm-5 text-center ">
+        <h3>CSV</h3> 
+        <br/>
+        <%= text_area_tag 'input', nil, class: 'form-control', style: 'width: 100%', rows: 20 %>
+        <br>
+        <%= file_field_tag "file", class: 'form-control' %>
+      </div>
+      <div class="col-sm-2 text-center" style="display: flex; align-items: center; justify-content: center; flex-direction: column">
+        <div>
+            <button type="submit" class="btn btn-outline-primary">Convert</button>
+        </div>
+      </div>
+      <div class="col-sm-5 text-center">
+        <h3>JSON</h3>
+        <br/>
+        <div>
+            <textarea id="" rows="20" style="width: 100%;"><%= @output %></textarea>
+        </div>
+      </div>
+  </div>
+<% end %>
