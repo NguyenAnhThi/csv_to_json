@@ -11,6 +11,7 @@ class HomeController < ApplicationController
     @output = ""
     @json = ""
     csv_str = input_params[:input]
+    
     CSV.parse(csv_str) do |row| 
       # puts " #{row[0]}#{row[1]}#{row[2]} #{row[3]}#{row[4]}" 
       unless row.empty?
@@ -25,7 +26,7 @@ class HomeController < ApplicationController
           end   
       else
         @json += "\n}"
-        @output += "METHOD:   " + @post + "\n" + "API_URL:   " + @api + "\n" + "JSON :" + @json + "\n\n"
+        @output += "METHOD:   " + @post + "\n" + "API_URL:   http://trial-api.ex-cloud.biz/v1/" + @api + "\n" + "JSON :" + @json + "\n\n"
         @json = ""
       end
     end 
