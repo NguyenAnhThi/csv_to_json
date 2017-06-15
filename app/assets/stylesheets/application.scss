@@ -1,8 +1,11 @@
 @import "bootstrap";
 
-.col-sm-5, .col-sm-2{
+.col-sm-5, .col-sm-6{
     // border: 1px solid green;
-    padding: 50px;
+    padding: 30px;
+}
+.col-sm-1{
+    padding: 0;
 }
 
 .btn {

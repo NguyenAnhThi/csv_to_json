@@ -3,22 +3,22 @@
     <div class="col-sm-5 text-center ">
         <h3>CSV</h3> 
         <br/>
-        <%= text_area_tag 'input', nil, class: 'form-control', style: 'width: 100%', rows: 20 %>
+        <%= text_area_tag 'input', nil, class: 'form-control', style: 'width: 100%', rows: 27 %>
         <br>
         <%= file_field_tag "file", class: 'form-control' %>
 
     </div>
-     <div class="col-sm-2 text-center" style="display: flex; align-items: center; justify-content: center; flex-direction: column">
+     <div class="col-sm-1 text-center" style="display: flex; align-items: center; justify-content: center; flex-direction: column">
      
         <div>
-            <button type="submit" class="btn btn-outline-primary">Convert</button>
+            <button type="submit" class="btn btn-outline-primary">-></button>
         </div>
     </div>
-    <div class="col-sm-5 text-center">
+    <div class="col-sm-6 text-center">
         <h3>JSON</h3>
         <br/>
         <div>
-            <textarea id="" rows="20" style="width: 100%;"></textarea>
+            <textarea class= "form-control" id="" rows="27" style="width: 100%;"></textarea>
         </div>
     </div>
 </div>
