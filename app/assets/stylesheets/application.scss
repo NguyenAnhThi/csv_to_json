@@ -1,8 +1,10 @@
 @import "bootstrap";
 
-.col-sm-5, .col-sm-6{
-    // border: 1px solid green;
-    padding: 30px;
+.col-sm-5{
+    padding: 30px 0 30px 30px;
+}
+.col-sm-6{
+     padding: 30px 30px 30px 0;
 }
 .col-sm-1{
     padding: 0;
@@ -10,4 +12,20 @@
 
 .btn {
     cursor: pointer;
+    color: white;
+    width: 65px;
+    &:hover{
+        color: white;
+        background: #0275d8;
+        border: 0px solid #0275d8;
+    }
+}
+
+body{
+    color: white;
+    margin: auto 20px; 
+    background: url('bg.jpg') center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
