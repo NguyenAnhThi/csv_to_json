@@ -33,13 +33,14 @@ class HomeController < ApplicationController
        @csv_str = input_params[:input] + "\r\n\r\n"
     end
     unless @csv_str.empty? 
+      @csv_str = @csv_str + "\nEnd"
       input_params[:apiURL].present?? @api_url = input_params[:apiURL] + '/' : @api_url = "http://trial-api.ex-cloud.biz/v1/"
       puts "***********"
       puts @csv_str.inspect
       puts "***********"
           
       @csv_str = @csv_str.gsub(/[\r\n]{3,}/, "\r\n\r\n")
-      
+      @csv_str = @csv_str.gsub(/\\t/, ",")
       puts "***********"
       puts @csv_str.inspect
       puts "***********"
@@ -49,25 +50,27 @@ class HomeController < ApplicationController
           puts " #{row[0]}#{row[1]}#{row[2]} #{row[3]}#{row[4]}" 
           unless row.empty?
             unless row[0].nil?
-              @post = row[0]
-              @api = row[1]
-              if @json.empty?
-                @json += "\n{\n  \"#{row[3]}\" : \"#{row[4]}\""
+              if !@post.nil? 
+                @json += "\n}"
+                @output += "METHOD:   " + @post + "\n" + "API_URL:   " + @api_url + @api + "\n" + "JSON :" + @json + "\n\n"
+                @json = ""
+                @post = nil
               end
-              else
-                @json +=  ",\n  \"#{row[3]}\" : \"#{row[4]}\""
+              if @post.nil?
+                @post = row[0]
+                @api = row[1]
+                if @json.empty? 
+                  @json += "\n{\n  \"#{row[3]}\" : \"#{row[4]}\""
+                end 
               end   
-          else
-            unless @post.nil?
-            @json += "\n}"
-            @output += "METHOD:   " + @post + "\n" + "API_URL:   " + @api_url + @api + "\n" + "JSON :" + @json + "\n\n"
-            @json = ""
+            else
+              @json +=  ",\n  \"#{row[3]}\" : \"#{row[4]}\""
             end
           end
-        end 
-        rescue
-          @output = "INVALID FORMAT"
         end
+      rescue
+        @output = "INVALID FORMAT"
+      end
     end
     render 'new'
   end
