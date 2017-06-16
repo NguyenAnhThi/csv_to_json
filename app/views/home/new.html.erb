@@ -3,7 +3,7 @@
     <div class="col-sm-5 text-center ">
         <h3>CSV</h3> 
         <br>
-        <%= text_area_tag 'input', nil, class: 'form-control', style: 'width: 100%', rows: 25 %>
+        <%= text_area_tag 'input', nil, class: 'form-control', style: 'width: 100%; height: calc(100vh - 275px)', rows: '31'   %>
         <br>
         <%= file_field_tag "file", class: 'form-control' %>
         <br>
@@ -12,18 +12,19 @@
             <input type="text" class="form-control" name="apiURL" placeholder="http://trial-api.ex-cloud.biz/v1">
         </lebel>
         </div>
+        
+        
     </div>
      <div class="col-sm-1 text-center" style="display: flex; align-items: center; justify-content: center; flex-direction: column">
-     
         <div>
-            <button type="submit" class="btn btn-outline-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-arrow-right"  aria-hidden="true"></i></button>
         </div>
     </div>
     <div class="col-sm-6 text-center">
         <h3>JSON</h3>
         <br/>
         <div>
-            <textarea class= "form-control" id="" rows="31" style="width: 100%;"><%= @output %></textarea>
+            <textarea class= "form-control" id="" rows="31" style="width: 100%; height: calc(100vh - 140px);"><%= @output %></textarea>
         </div>
          <br/>
     </div>
