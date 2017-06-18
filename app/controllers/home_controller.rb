@@ -26,11 +26,15 @@ class HomeController < ApplicationController
       if File.extname(file.path) == ".csv"
         @csv_str = File.read(file.path)
         @csv_str = @csv_str.gsub(/\n/, "\r\n")
+        @csv_str = @csv_str.gsub(/\t/, ",")
+        puts @csv_str.inspect
+        puts "###############################"
       else
           @output = "INVALID FORMAT"
       end
     else
        @csv_str = input_params[:input] + "\r\n\r\n"
+       @csv_str = @csv_str.gsub(/\t/, ",")
     end
     unless @csv_str.empty? 
       @csv_str = @csv_str + "\nEnd"
@@ -40,7 +44,6 @@ class HomeController < ApplicationController
       puts "***********"
           
       @csv_str = @csv_str.gsub(/[\r\n]{3,}/, "\r\n\r\n")
-      @csv_str = @csv_str.gsub(/\\t/, ",")
       puts "***********"
       puts @csv_str.inspect
       puts "***********"
@@ -69,6 +72,7 @@ class HomeController < ApplicationController
           end
         end
       rescue
+        raise
         @output = "INVALID FORMAT"
       end
     end
