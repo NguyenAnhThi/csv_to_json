@@ -54,8 +54,8 @@ class HomeController < ApplicationController
           unless row.empty?
             unless row[0].nil?
               if !@post.nil? 
-                @json += "\n}"
-                @output += "METHOD:   " + @post + "\n" + "API_URL:   " + @api_url + @api + "\n" + "JSON :" + @json + "\n\n"
+                @json += "\n\t],\n],"
+                @output += "[\n\t'method' => '" + @post.downcase + "',\n\t" + "'api' => '" + @api + "',\n\t" + "'data' => " + @json + "\n\n"
                 @json = ""
                 @post = nil
               end
@@ -63,11 +63,11 @@ class HomeController < ApplicationController
                 @post = row[0]
                 @api = row[1]
                 if @json.empty? 
-                  @json += "\n{\n  \"#{row[3]}\" : \"#{row[4]}\""
+                  @json += "\t[\n\t  '#{row[3]}' => '#{row[4]}',"
                 end 
               end   
             else
-              @json +=  ",\n  \"#{row[3]}\" : \"#{row[4]}\""
+              @json +=  "\n\t  '#{row[3]}' => '#{row[4]}',"
             end
           end
         end
@@ -76,6 +76,7 @@ class HomeController < ApplicationController
         @output = "INVALID FORMAT"
       end
     end
+    @output = "<?php\nreturn ['data' =>\n[\n" + @output +"]\n];"
     render 'new'
   end
 
